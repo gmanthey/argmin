@@ -242,6 +242,7 @@ where
             PotentialBug,
             "`BFGS`: No parameters returned by line search."
         ))?;
+        let xk1 = xk1.to_owned();
 
         let next_cost = sub_state.get_cost();
 
