@@ -238,7 +238,7 @@ where
             .ctrlc(false)
             .run()?;
 
-        let xk1 = sub_state.take_param().ok_or_else(argmin_error_closure!(
+        let xk1 = sub_state.get_best_param().ok_or_else(argmin_error_closure!(
             PotentialBug,
             "`BFGS`: No parameters returned by line search."
         ))?;
