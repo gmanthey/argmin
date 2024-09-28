@@ -6,8 +6,7 @@
 // copied, modified, or distributed except according to those terms.
 
 use crate::core::{
-    ArgminFloat, CostFunction, Error, Executor, Gradient, IterState, LineSearch,
-    OptimizationResult, Problem, Solver, TerminationReason, TerminationStatus, KV,
+    ArgminFloat, CostFunction, Error, Executor, Gradient, IterState, LineSearch, OptimizationResult, Problem, Solver, State, TerminationReason, TerminationStatus, KV
 };
 use argmin_math::{
     ArgminAdd, ArgminDot, ArgminEye, ArgminL2Norm, ArgminMul, ArgminSub, ArgminTranspose,
@@ -234,6 +233,7 @@ where
                     .param(param.clone())
                     .gradient(prev_grad.clone())
                     .cost(cur_cost)
+                    .max_iters(state.get_max_iters())
             })
             .ctrlc(false)
             .run()?;
